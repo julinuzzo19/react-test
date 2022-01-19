@@ -1,8 +1,14 @@
-import './styles.css'
+import styled from 'styled-components';
+
+const Titulo = styled.h1`
+  color: red;
+  text-align: center;
+`;
+
 const Header = () => {
   return (
     <>
-      <h1>Header</h1>
+      <Titulo>Header</Titulo>
     </>
   );
 };
