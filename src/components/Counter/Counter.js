@@ -1,4 +1,14 @@
 import {useState} from 'react';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  color: green;
+  text-align: center;
+`;
+
+const Button = styled.button`
+  width: 50px;
+`;
 
 const Counter = () => {
   const [counter, setCounter] = useState(0);
@@ -8,16 +18,16 @@ const Counter = () => {
   };
 
   return (
-    <>
+    <Container>
       <h2>Contador: {counter}</h2>
 
-      <button value='sum' onClick={handleCounter}>
-        +
-      </button>
-      <button value='minus' onClick={handleCounter}>
+      <Button value='minus' onClick={handleCounter}>
         -
-      </button>
-    </>
+      </Button>
+      <Button value='sum' onClick={handleCounter}>
+        +
+      </Button>
+    </Container>
   );
 };
 
