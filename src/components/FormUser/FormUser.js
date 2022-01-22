@@ -1,18 +1,18 @@
 import {Row, Col, Container, Form, Button} from 'react-bootstrap';
 
-function FormTask() {
+function FormUser() {
   return (
     <Container>
       <Row className='justify-content-md-center'>
         <Col md={6}>
           <Form>
             <Form.Group className='mb-3'>
-              <Form.Label>Name Task</Form.Label>
-              <Form.Control type='texr' placeholder='Enter task' />
+              <Form.Label>Name User</Form.Label>
+              <Form.Control type='texr' placeholder='Enter User' />
             </Form.Group>
 
             <Form.Group className='mb-3'>
-              <Form.Label>Description task</Form.Label>
+              <Form.Label>Description User</Form.Label>
               <Form.Control as='textarea' placeholder='description' />
             </Form.Group>
 
@@ -26,4 +26,4 @@ function FormTask() {
   );
 }
 
-export default FormTask;
+export default FormUser;
