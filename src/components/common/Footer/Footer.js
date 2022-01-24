@@ -2,6 +2,7 @@ import styled from 'styled-components';
 const Container = styled.div`
   background-color: teal;
   text-align: center;
+  margin-top:80vh;
 `;
 
 const Footer = () => {

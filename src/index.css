@@ -6,9 +6,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: rgb(131, 130, 130);
 }
-input, textarea {
+input,
+textarea {
   background-color: rgb(177, 176, 176) !important;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  
 }

@@ -1,0 +1,13 @@
+  useEffect(() => {
+    async function get() {
+      setUsers(await getUsers());
+    }
+    get();
+  }, []);
+
+
+   // const handleClick = () => {
+  //   console.log(users);
+  // };
+
+    const [users, setUsers] = useState([]);
