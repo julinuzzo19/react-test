@@ -28,6 +28,7 @@ function User() {
 
   const handleCreateUser = (user) => {
     console.log(user);
+    setUsers([...users, user]);
   };
 
   const handleClick = () => {
@@ -36,9 +37,9 @@ function User() {
 
   return (
     <>
-      <FormUser CreateUser={handleCreateUser} />
+      <FormUser createUser={handleCreateUser} />
       <Users users={users} />
-      {/* <button onClick={handleClick}>Click</button> */}
+      <button onClick={handleClick}>Click</button>
     </>
   );
 }
