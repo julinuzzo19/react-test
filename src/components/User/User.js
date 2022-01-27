@@ -1,7 +1,6 @@
 import {useEffect, useState} from 'react';
 import FormUser from '../FormUser/FormUser';
 import Users from '../Users/Users';
-import {getUsers} from '../../services/getAllUsers';
 
 function User() {
   const [users, setUsers] = useState([]);
@@ -23,7 +22,7 @@ function User() {
         }
       ]);
     }
-    get();
+   
   }, []);
 
   const handleCreateUser = (user) => {

@@ -12,5 +12,11 @@ textarea {
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-  
+}
+
+.dark {
+  background: rgb(54, 53, 53);
+}
+.light {
+  background: #fff;
 }

@@ -2,19 +2,20 @@ import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import {BrowserRouter} from 'react-router-dom';
 
-import {useEffect, useState} from 'react';
-import {getUsers} from './services/getAllUsers';
 import Router from './components/common/Router';
 import Navbar from './components/common/Navbar/Navbar';
+import {ThemeProvider} from './contexts/ThemeContext';
 
 function App() {
   return (
     <div className='App'>
       <BrowserRouter>
-        <Header />
-        <Navbar />
-        <Router />
-        <Footer />
+        <ThemeProvider>
+          <Header />
+          <Navbar />
+          <Router />
+          <Footer />
+        </ThemeProvider>
       </BrowserRouter>
     </div>
   );
