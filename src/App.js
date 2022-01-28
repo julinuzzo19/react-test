@@ -1,22 +1,26 @@
+import {BrowserRouter} from 'react-router-dom';
+import store from './store';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
-import {BrowserRouter} from 'react-router-dom';
 
 import Router from './components/common/Router';
 import Navbar from './components/common/Navbar/Navbar';
 import {ThemeProvider} from './contexts/ThemeContext';
+import {Provider} from 'react-redux';
 
 function App() {
   return (
     <div className='App'>
-      <BrowserRouter>
-        <ThemeProvider>
+      <Provider store={store}>
+        <BrowserRouter>
+          <ThemeProvider>
           <Header />
           <Navbar />
           <Router />
           <Footer />
-        </ThemeProvider>
-      </BrowserRouter>
+          </ThemeProvider>
+        </BrowserRouter>
+      </Provider>
     </div>
   );
 }

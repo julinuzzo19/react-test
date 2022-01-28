@@ -1,7 +1,7 @@
-import {useReducer} from 'react';
+// import {} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 import styled from 'styled-components';
-import {counterReducer} from '../../reducers/counterReducer';
-import {DECREMENT, INCREMENT, RESET} from '../../types/counterTypes';
+import {decrement, increment, reset} from '../../actions/counterActions';
 
 const Container = styled.div`
   color: green;
@@ -18,22 +18,20 @@ const Counter = () => {
   // const handleCounter = (e) => {
   //   e.target.value === 'sum' ? setCounter(counter + 1) : setCounter(counter - 1);
   // };
-  const initialState = {counter: 0};
-  const [state, dispatch] = useReducer(counterReducer, initialState);
+
+  // const [state, dispatch] = useReducer(counterReducer);
+
+  const {counter} = useSelector(state => state);
+
+  const dispatch = useDispatch();
 
   return (
     <Container>
-      <h2>Contador: {state.counter}</h2>
-
-      <Button value='minus' onClick={() => dispatch({type: DECREMENT})}>
-        -
-      </Button>
-      <Button value='sum' onClick={() => dispatch({type: INCREMENT})}>
-        +
-      </Button>
-      <Button value='reset' onClick={() => dispatch({type: RESET})}>
-        Reset
-      </Button>
+      <h2>Contador: {counter.counter}</h2>
+      {console.log(counter)}
+      <Button onClick={() => dispatch(decrement())}>-</Button>
+      <Button onClick={() => dispatch(increment())}>+</Button>
+      <Button onClick={() => dispatch(reset())}>Reset</Button>
     </Container>
   );
 };
