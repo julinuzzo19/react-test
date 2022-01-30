@@ -1,31 +1,38 @@
 import {useEffect, useState} from 'react';
+import {getUsers} from '../../services/getAllUsers';
 import FormUser from '../FormUser/FormUser';
 import Users from '../Users/Users';
 
 function User() {
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    async function get() {
-      //setUsers(await getUsers());
-      setUsers([
-        {
-          id: 1,
-          first_name: 'Juan',
-          last_name: 'Perez',
-          email: 'jp@gmail.com'
-        },
-        {
-          id: 2,
-          first_name: 'martin',
-          last_name: 'Perez',
-          email: 'jp@gmail.com'
-        }
-      ]);
-    }
-   
+    getUsers()
+      .then(setUsers)
+      .catch(err => console.log(err));
+
+    // async function get() {
+    //   const response = await getUsers();
+    //   console.log(response);
+    //   setUsers(response);
+    //   // setUsers([
+    //   //   {
+    //   //     id: 1,
+    //   //     first_name: 'Juan',
+    //   //     last_name: 'Perez',
+    //   //     email: 'jp@gmail.com'
+    //   //   },
+    //   //   {
+    //   //     id: 2,
+    //   //     first_name: 'martin',
+    //   //     last_name: 'Perez',
+    //   //     email: 'jp@gmail.com'
+    //   //   }
+    //   // ]);
+    // }
+    // get();
   }, []);
 
-  const handleCreateUser = (user) => {
+  const handleCreateUser = user => {
     console.log(user);
     setUsers([...users, user]);
   };

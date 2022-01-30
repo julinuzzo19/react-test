@@ -28,7 +28,6 @@ const Counter = () => {
   return (
     <Container>
       <h2>Contador: {counter.counter}</h2>
-      {console.log(counter)}
       <Button onClick={() => dispatch(decrement())}>-</Button>
       <Button onClick={() => dispatch(increment())}>+</Button>
       <Button onClick={() => dispatch(reset())}>Reset</Button>

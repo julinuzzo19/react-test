@@ -12,7 +12,6 @@ const Header = () => {
 
   return (
     <div className={theme}>
-      {console.log(theme, handleTheme)}
       <Titulo>Header</Titulo>
       <button onClick={() => handleTheme('dark')}>Dark</button>
       <button onClick={() => handleTheme('light')}>Light</button>
