@@ -1,14 +1,20 @@
+import React, {ChangeEvent} from 'react';
+
 import {Row, Col, Container, Form, Button} from 'react-bootstrap';
 
-function FormUser({createUser}) {
-  const handleSubmit = (e) => {
+interface Props {
+  createUser?: any;
+}
+
+function FormUser({createUser}: Props) {
+  const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     const [nameElement, emailElement, idElement] = e.target.elements;
 
-    let nameArray = nameElement.value.split(' ');
+    let nameArray = (nameElement as HTMLInputElement).value.split(' ');
 
-    let email = emailElement.value;
-    let id = idElement.value;
+    let email = (emailElement as HTMLInputElement).value;
+    let id = (idElement as HTMLInputElement).value;
 
     let first_name = nameArray[0];
 

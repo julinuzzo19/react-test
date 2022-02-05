@@ -1,14 +1,19 @@
 import React from 'react';
 import {Row, Col, Table, Container} from 'react-bootstrap';
-import styled from 'styled-components';
+import {User} from '../../interfaces/User';
+// import styled from 'styled-components';
 
-const ContainerStyled = styled(Container)`
-  margin-bottom: 77px !important;
-`;
+// const ContainerStyled = styled(Container)`
+//   margin-bottom: 77px !important;
+// `;
 
-function Users({users}) {
+interface Props {
+  users: User[];
+}
+
+function Users({users}: Props) {
   return (
-    <ContainerStyled fluid className='mt-5'>
+    <Container fluid className='mt-5'>
       <Row className='justify-content-md-center'>
         <Col md={8}>
           <Table striped bordered hover size='sm'>
@@ -21,7 +26,7 @@ function Users({users}) {
               </tr>
             </thead>
             <tbody>
-              {users.map((item) => (
+              {users.map(item => (
                 <tr key={item.id}>
                   <td>{item.id}</td>
                   <td>{item.first_name}</td>
@@ -33,7 +38,7 @@ function Users({users}) {
           </Table>
         </Col>
       </Row>
-    </ContainerStyled>
+    </Container>
   );
 }
 

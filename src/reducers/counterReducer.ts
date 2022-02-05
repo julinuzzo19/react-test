@@ -2,7 +2,12 @@ import {DECREMENT, INCREMENT, RESET} from '../types';
 
 const initialState = {counter: 0};
 
-const counterReducer = (state = initialState, action) => {
+interface Action {
+  type: string;
+  payload: any;
+}
+
+const counterReducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case INCREMENT:
       return {counter: state.counter + 1};

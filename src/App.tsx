@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {BrowserRouter} from 'react-router-dom';
 import store from './store';
 import Header from './components/common/Header';
@@ -14,10 +16,10 @@ function App() {
       <Provider store={store}>
         <BrowserRouter>
           <ThemeProvider>
-          <Header />
-          <Navbar />
-          <Router />
-          <Footer />
+            <Header />
+            <Navbar />
+            <Router />
+            <Footer />
           </ThemeProvider>
         </BrowserRouter>
       </Provider>

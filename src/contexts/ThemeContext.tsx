@@ -1,13 +1,14 @@
+import React from 'react';
 import {createContext, useState} from 'react';
 
-const ThemeContext = createContext();
+const ThemeContext = createContext<any>({});
 
 const initialState = 'light';
 
-const ThemeProvider = ({children}) => {
+const ThemeProvider = ({children}: any) => {
   const [theme, setTheme] = useState(initialState);
 
-  const handleTheme = (theme) => {
+  const handleTheme = (theme: any) => {
     setTheme(theme);
   };
 

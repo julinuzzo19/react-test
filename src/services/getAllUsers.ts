@@ -1,4 +1,4 @@
-const fromApiResponse = apiResponse => {
+const fromApiResponse = (apiResponse: any) => {
   const {data} = apiResponse;
   return data;
 };
@@ -9,6 +9,6 @@ export const getUsers = () => {
     .then(fromApiResponse);
 };
 
-//  .then(fromApiResponse); 
-//  == 
+//  .then(fromApiResponse);
+//  ==
 //.then( res => {return fromApiResponse(res)})
