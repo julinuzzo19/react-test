@@ -1,23 +1,30 @@
-import React, {useEffect, useState} from 'react';
-import {getUsers} from '../../services/getAllUsers';
+import React, {useState, useEffect} from 'react';
 import FormUser from '../FormUser/FormUser';
 import Users from '../Users/Users';
 import {User as IUser} from '../../interfaces/User';
-
-let defaultValue: IUser[] = [];
+import {useDispatch, useSelector} from 'react-redux';
+import {RootState} from '../../reducers';
+import {getUsers} from '../../actions/userActions';
+import {createUser} from '../../services/createUser';
+import Loading from '../common/Loading/Loading';
+// let defaultValue: IUser[] = [];
 
 function User() {
-  const [users, setUsers] = useState(defaultValue);
+  // const [users, setUsers] = useState(defaultValue);
+  const {data: users, loading} = useSelector((state: RootState) => state.user);
+  const dispatch = useDispatch();
+
+  console.log(users);
+
   useEffect(() => {
-    getUsers()
-      .then(setUsers)
-      .catch(err => console.log(err));
+    dispatch(getUsers());
   }, []);
 
-  const handleCreateUser = (user: IUser) => {
-    console.log(user);
-    setUsers([...users, user]);
-  };
+  // const handleCreateUser = async (user: IUser) => {
+  //   console.log(user);
+  //   await createUser(user);
+  //   setUsers([...users, user]);
+  // };
 
   const handleClick = () => {
     console.log(users);
@@ -25,9 +32,9 @@ function User() {
 
   return (
     <>
-      <FormUser createUser={handleCreateUser} />
-      <Users users={users} />
-      <button onClick={handleClick}>Click</button>
+      {/* <FormUser createUser={handleCreateUser} /> */}
+      {loading ? <Loading /> : <Users users={users} />}
+      <button onClick={handleClick}>call api</button>
     </>
   );
 }
