@@ -1,7 +1,11 @@
 import {useEffect} from 'react';
-import {GET_USERS_SUCCESS, GET_USERS_FAILURE} from './../types/index';
+import {
+  GET_USERS_SUCCESS,
+  GET_USERS_FAILURE,
+  POST_USERS_SUCCESS,
+  POST_USERS_FAILURE
+} from './../types';
 import {User} from '../interfaces/User';
-import {} from '../types';
 
 const initialState: any = {data: [], loading: true};
 
@@ -16,6 +20,10 @@ const userReducer = (state = initialState, action: Action) => {
       return {data: [...action.payload], loading: false};
     case GET_USERS_FAILURE:
       return {data: action.payload, loading: false};
+    case POST_USERS_SUCCESS:
+      return {message: [action.payload], loading: false};
+    case POST_USERS_FAILURE:
+      return {message: action.payload, loading: false};
     default:
       return state;
   }

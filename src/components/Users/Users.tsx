@@ -9,9 +9,13 @@ import {User} from '../../interfaces/User';
 
 interface Props {
   users: User[];
+  loading: boolean;
 }
 
-function Users({users}: Props) {
+function Users({users, loading}: Props) {
+
+  // agregar usestate
+  console.log(loading);
   return (
     <Container fluid className='mt-5'>
       <Row className='justify-content-md-center'>
@@ -26,14 +30,15 @@ function Users({users}: Props) {
               </tr>
             </thead>
             <tbody>
-              {users.map(item => (
-                <tr key={item.id}>
-                  <td>{item.id}</td>
-                  <td>{item.first_name}</td>
-                  <td>{item.last_name}</td>
-                  <td>{item.email}</td>
-                </tr>
-              ))}
+              {users &&
+                users.map(item => (
+                  <tr key={item.id}>
+                    <td>{item.id}</td>
+                    <td>{item.first_name}</td>
+                    <td>{item.last_name}</td>
+                    <td>{item.email}</td>
+                  </tr>
+                ))}
             </tbody>
           </Table>
         </Col>
