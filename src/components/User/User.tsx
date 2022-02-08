@@ -1,19 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import FormUser from '../FormUser/FormUser';
 import Users from '../Users/Users';
 import {User as IUser} from '../../interfaces/User';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../../reducers';
-import {getUsers, postUsers} from '../../actions/userActions';
-import Loading from '../common/Loading/Loading';
+import {postUsers} from '../../actions/userActions';
 
 function User() {
-  const {data: users, loading} = useSelector((state: RootState) => state.user);
+  const {data: users} = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getUsers());
-  }, [dispatch]);
 
   const handleCreateUser = async (user: IUser) => {
     await dispatch(postUsers(user));
@@ -26,7 +22,7 @@ function User() {
   return (
     <>
       <FormUser createUser={handleCreateUser} />
-      {loading ? <Loading /> : <Users users={users} loading={loading} />}
+      <Users />
       <button onClick={handleClick}>call api</button>
     </>
   );

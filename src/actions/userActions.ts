@@ -27,8 +27,10 @@ export const postUsers = (user: User) => {
     axios
       .post(`http://localhost:3000/api/users/${user.id}`, user)
       .then(res => {
-        console.log(res);
-        dispatch({type: POST_USERS_SUCCESS, payload: res.data.message});
+        dispatch({
+          type: POST_USERS_SUCCESS,
+          payload: {data: res.data.data, message: res.data.message}
+        });
       })
       .catch(err => {
         console.log(err);

@@ -1,21 +1,31 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Row, Col, Table, Container} from 'react-bootstrap';
+import {useSelector, useDispatch} from 'react-redux';
+import {getUsers} from '../../actions/userActions';
 import {User} from '../../interfaces/User';
+import {RootState} from '../../reducers';
+import Loading from '../common/Loading/Loading';
 // import styled from 'styled-components';
 
 // const ContainerStyled = styled(Container)`
 //   margin-bottom: 77px !important;
 // `;
 
-interface Props {
-  users: User[];
-  loading: boolean;
-}
+function Users() {
+  const {
+    data: users,
+    loading,
+    error
+  } = useSelector((state: RootState) => state.user);
+  const dispatch = useDispatch();
 
-function Users({users, loading}: Props) {
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
 
-  // agregar usestate
-  console.log(loading);
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <Container fluid className='mt-5'>
       <Row className='justify-content-md-center'>
@@ -31,14 +41,16 @@ function Users({users, loading}: Props) {
             </thead>
             <tbody>
               {users &&
-                users.map(item => (
-                  <tr key={item.id}>
-                    <td>{item.id}</td>
-                    <td>{item.first_name}</td>
-                    <td>{item.last_name}</td>
-                    <td>{item.email}</td>
-                  </tr>
-                ))}
+                users.map((item: User) => {
+                  return (
+                    <tr key={item.id}>
+                      <td>{item.id}</td>
+                      <td>{item.first_name}</td>
+                      <td>{item.last_name}</td>
+                      <td>{item.email}</td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </Table>
         </Col>
