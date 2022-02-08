@@ -1,10 +1,20 @@
 //COUNTER
-export const INCREMENT = 'increment';
-export const DECREMENT = 'decrement';
-export const RESET = 'reset';
+export const INCREMENT = 'INCREMENT';
+export const DECREMENT = 'DECREMENT';
+export const RESET = 'RESET';
 
+//USERS CRUD
 export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
 export const GET_USERS_FAILURE = 'GET_USERS_FAILURE';
 
-export const POST_USERS_SUCCESS = 'POST_USERS_SUCCESS';
-export const POST_USERS_FAILURE = 'POST_USERS_FAILURE';
+export const POST_USER_SUCCESS = 'POST_USER_SUCCESS';
+export const POST_USER_FAILURE = 'POST_USER_FAILURE';
+
+export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
+export const UPDATE_USER_FAILURE = 'UPDATE_USER_FAILURE';
+
+export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
+export const DELETE_USER_FAILURE = 'DELETE_USER_FAILURE';
+
+export const GET_USER_BY_ID_SUCCESS = 'GET_USER_BY_ID_SUCCESS';
+export const GET_USER_BY_ID_FAILURE = 'GET_USER_BY_ID_FAILURE';
