@@ -1,26 +1,17 @@
-import React, {useEffect, useState} from 'react';
-import {getUsers} from '../../services/getAllUsers';
+import React, {useEffect} from 'react';
 import FormUser from '../FormUser/FormUser';
 import Users from '../Users/Users';
 import {User as IUser} from '../../interfaces/User';
-import {createUser} from '../../services/createUser';
-
-let defaultValue: IUser[] = [];
+import {useDispatch, useSelector} from 'react-redux';
+import {RootState} from '../../reducers';
+import {postUsers} from '../../actions/userActions';
 
 function User() {
-  const [users, setUsers] = useState(defaultValue);
-  useEffect(() => {
-    getUsers()
-      .then(setUsers)
-      .catch(err => console.log(err));
-  }, []);
+  const {data: users} = useSelector((state: RootState) => state.user);
+  const dispatch = useDispatch();
 
   const handleCreateUser = async (user: IUser) => {
-    console.log(user);
-    const response = await createUser(user);
-
-    console.log(response);
-    setUsers([...users, user]);
+    await dispatch(postUsers(user));
   };
 
   const handleClick = () => {
@@ -30,8 +21,8 @@ function User() {
   return (
     <>
       <FormUser createUser={handleCreateUser} />
-      <Users users={users} />
-      <button onClick={handleClick}>Click</button>
+      <Users />
+      <button onClick={handleClick}>call api</button>
     </>
   );
 }
