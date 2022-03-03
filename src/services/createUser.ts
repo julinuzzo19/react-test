@@ -1,12 +1,8 @@
 import {User} from './../interfaces/User';
-export const createUser = (user: User) => {
-  let userJSON = JSON.stringify(user);
+import Axios from 'axios';
 
-  return fetch('http://localhost:3000/api/users/16', {
-    method: 'POST',
-    body: userJSON
-  })
-    .then(res => res.json())
-    .then(res => res)
+export const createUser = (user: User) => {
+  return Axios.post(`http://localhost:3000/api/users/${user.id}`, user)
+    .then(res => res.data)
     .catch(err => console.log(err));
 };

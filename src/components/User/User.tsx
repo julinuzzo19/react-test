@@ -3,6 +3,7 @@ import {getUsers} from '../../services/getAllUsers';
 import FormUser from '../FormUser/FormUser';
 import Users from '../Users/Users';
 import {User as IUser} from '../../interfaces/User';
+import {createUser} from '../../services/createUser';
 
 let defaultValue: IUser[] = [];
 
@@ -14,8 +15,11 @@ function User() {
       .catch(err => console.log(err));
   }, []);
 
-  const handleCreateUser = (user: IUser) => {
+  const handleCreateUser = async (user: IUser) => {
     console.log(user);
+    const response = await createUser(user);
+
+    console.log(response);
     setUsers([...users, user]);
   };
 
