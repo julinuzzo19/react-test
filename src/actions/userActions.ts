@@ -45,7 +45,7 @@ export const postUsers = (user: User) => {
   };
 };
 
-export const deleteUser = (id: number) => {
+export const deleteUser = (id: Number) => {
   return (dispatch: any) => {
     axios
       .delete(`http://localhost:3000/api/users/${id}`)
