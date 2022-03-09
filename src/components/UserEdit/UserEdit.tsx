@@ -1,6 +1,6 @@
 import {useLocation, useParams} from 'react-router-dom';
 import Form from '../common/Form/Form';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch, useSelector, useStore} from 'react-redux';
 import {RootState} from '../../reducers';
 import {updateUser} from '../../actions/userActions';
 import {ChangeEvent, useEffect, useState} from 'react';
@@ -19,13 +19,7 @@ const UserEdit = () => {
     id: user.id
   });
 
-  useEffect(() => {
-    setData({
-      full_name: `${user.first_name} ${user.last_name}`,
-      email: user.email,
-      id: user.id
-    });
-  }, [dispatch, message, error]);
+  useEffect(() => {}, [dispatch, message, error]);
 
   const handleChange = (e: any) => {
     setData({...user, [e.target.name]: e.target.value});
@@ -46,8 +40,6 @@ const UserEdit = () => {
         last_name: nameArray[1]
       })
     );
-
-    console.log({message, error});
   };
 
   return (
@@ -55,6 +47,7 @@ const UserEdit = () => {
       <h1>User id:</h1>
       {id}
       <Form handleSubmit={handleSubmit} user={data} handleChange={handleChange} />
+      {message && <p>{message}</p>}
     </>
   );
 };
