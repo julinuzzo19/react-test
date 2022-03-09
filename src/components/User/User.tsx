@@ -12,6 +12,7 @@ function User() {
 
   const handleCreateUser = async (user: IUser) => {
     await dispatch(postUsers(user));
+
   };
 
   const handleClick = () => {

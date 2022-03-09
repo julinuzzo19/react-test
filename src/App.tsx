@@ -10,21 +10,17 @@ import Navbar from './components/common/Navbar/Navbar';
 import {ThemeProvider} from './contexts/ThemeContext';
 import {Provider} from 'react-redux';
 
-function App() {
-  return (
-    <div className='App'>
-      <Provider store={store}>
-        <BrowserRouter>
-          <ThemeProvider>
-            <Header />
-            <Navbar />
-            <Router />
-            <Footer />
-          </ThemeProvider>
-        </BrowserRouter>
-      </Provider>
-    </div>
-  );
-}
+const App = () => (
+  <Provider store={store}>
+    <BrowserRouter>
+      <ThemeProvider>
+        <Header />
+        <Navbar />
+        <Router />
+        <Footer />
+      </ThemeProvider>
+    </BrowserRouter>
+  </Provider>
+);
 
 export default App;

@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import {useSelector, useDispatch} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
 import {
   Grid,
   Button,
@@ -11,6 +12,7 @@ import {
   TableBody
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import UpdateIcon from '@mui/icons-material/ModeEditOutline';
 
 import {getUsers, deleteUser} from '../../actions/userActions';
 import {User} from '../../interfaces/User';
@@ -18,6 +20,9 @@ import {RootState} from '../../reducers';
 import Loading from '../common/Loading/Loading';
 
 const DeleteIconStyled = styled(DeleteIcon)`
+  color: black;
+`;
+const UpdateIconStyled = styled(UpdateIcon)`
   color: black;
 `;
 
@@ -29,6 +34,8 @@ function Users() {
   } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
 
+  let navigate = useNavigate();
+
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
@@ -38,6 +45,9 @@ function Users() {
     dispatch(getUsers());
   };
 
+  const handleUpdateItem = (user: User) => {
+    navigate(`/users/${user.id}`, {state: {user}});
+  };
   if (loading) {
     return <Loading />;
   }
@@ -48,10 +58,11 @@ function Users() {
           <TableHead>
             <TableRow>
               <TableCell>#</TableCell>
-              <TableCell>Email</TableCell>
               <TableCell>First Name</TableCell>
               <TableCell>Last name</TableCell>
+              <TableCell>Email</TableCell>
               <TableCell>Remove</TableCell>
+              <TableCell>Update</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -69,6 +80,15 @@ function Users() {
                       }}
                     >
                       <DeleteIconStyled />
+                    </Button>
+                  </TableCell>
+                  <TableCell>
+                    <Button
+                      onClick={() => {
+                        handleUpdateItem(item);
+                      }}
+                    >
+                      <UpdateIconStyled />
                     </Button>
                   </TableCell>
                 </TableRow>

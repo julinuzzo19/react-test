@@ -18,7 +18,6 @@ export const getUsers = () => {
     axios
       .get('http://localhost:3000/api/users/')
       .then(res => {
-        console.log(res);
         dispatch({type: GET_USERS_SUCCESS, payload: res.data.data});
       })
       .catch(err => {
