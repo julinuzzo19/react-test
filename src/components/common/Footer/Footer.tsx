@@ -1,17 +1,23 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import styled from 'styled-components';
+import ThemeContext from '../../../contexts/ThemeContext';
+const Container = styled.div`
+  text-align: center;
 
-// import styled from 'styled-components';
-// const Container = styled.div`
-//   background-color: teal;
-//   text-align: center;
-//   margin-top:80vh;
-// `;
+  ${() => {
+    const {theme} = useContext(ThemeContext);
+    return theme == 'dark'
+      ? `background-color:black; color:white;`
+      : `background-color:white; color:black;`;
+  }}
+  bottom:0;
+`;
 
 const Footer = () => {
   return (
-    <div>
-      <h2>Footer</h2>
-    </div>
+    <Container className='container-footer'>
+      <h2 className='m-0'>Footer</h2>
+    </Container>
   );
 };
 

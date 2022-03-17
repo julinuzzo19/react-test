@@ -1,10 +1,9 @@
 import {useLocation, useParams} from 'react-router-dom';
-import Form from '../common/Form/Form';
+import Form from '../../common/Form/Form';
 import {useDispatch, useSelector, useStore} from 'react-redux';
-import {RootState} from '../../reducers';
-import {updateUser} from '../../actions/userActions';
+import {RootState} from '../../../reducers';
+import {updateUser} from '../../../actions/userActions';
 import {ChangeEvent, useEffect, useState} from 'react';
-import {User} from '../../interfaces/User';
 
 const UserEdit = () => {
   let {id} = useParams();

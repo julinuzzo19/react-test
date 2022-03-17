@@ -1,4 +1,5 @@
-import React from 'react';
+import {color} from '@mui/system';
+import React, {useEffect} from 'react';
 import ThemeContext from '../../../contexts/ThemeContext';
 // import styled from 'styled-components';
 // import ThemeContext from '../../../contexts/ThemeContext';
@@ -13,7 +14,7 @@ const Header = () => {
 
   return (
     <div className={theme}>
-      <h1>Header</h1>
+      <h1 style={{color: theme == 'dark' ? 'white' : 'black'}}>Header</h1>
       <button onClick={() => handleTheme('dark')}>Dark</button>
       <button onClick={() => handleTheme('light')}>Light</button>
     </div>

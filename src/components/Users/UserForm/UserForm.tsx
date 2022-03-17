@@ -1,11 +1,11 @@
 import React, {ChangeEvent} from 'react';
-import Form from '../common/Form/Form';
+import Form from '../../common/Form/Form';
 
 interface Props {
   createUser?: any;
 }
 
-function FormUser({createUser}: Props) {
+function UserForm({createUser}: Props) {
   const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     const [nameElement, emailElement, idElement] = e.target.elements;
@@ -26,4 +26,4 @@ function FormUser({createUser}: Props) {
   return <Form handleSubmit={handleSubmit} />;
 }
 
-export default FormUser;
+export default UserForm;
