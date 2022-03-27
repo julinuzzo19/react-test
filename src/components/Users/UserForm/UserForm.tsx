@@ -3,24 +3,28 @@ import Form from '../../common/Form/Form';
 
 interface Props {
   createUser?: any;
+  createImageUser?: any;
 }
 
-function UserForm({createUser}: Props) {
+function UserForm({createUser, createImageUser}: Props) {
   const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const [nameElement, emailElement, idElement] = e.target.elements;
+    const [nameElement, emailElement, idElement, imageElement] = e.target.elements;
 
     let nameArray = (nameElement as HTMLInputElement).value.split(' ');
 
     let email = (emailElement as HTMLInputElement).value;
     let id = (idElement as HTMLInputElement).value;
 
-    let first_name = nameArray[0];
+    let image: FileList | null = (imageElement as HTMLInputElement).files;
+    let file: null | File = image![0];
 
+    let first_name = nameArray[0];
     nameArray.shift();
     let last_name = nameArray.join(' ');
 
     createUser({id, email, first_name, last_name});
+    createImageUser({image: file, id});
   };
 
   return <Form handleSubmit={handleSubmit} />;

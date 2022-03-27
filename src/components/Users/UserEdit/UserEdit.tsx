@@ -2,7 +2,7 @@ import {useLocation, useParams} from 'react-router-dom';
 import Form from '../../common/Form/Form';
 import {useDispatch, useSelector, useStore} from 'react-redux';
 import {RootState} from '../../../reducers';
-import {updateUser} from '../../../actions/userActions';
+import {postImageUser, updateUser} from '../../../actions/userActions';
 import {ChangeEvent, useEffect, useState} from 'react';
 
 const UserEdit = () => {
@@ -15,7 +15,8 @@ const UserEdit = () => {
   const [data, setData] = useState({
     full_name: `${user.first_name} ${user.last_name}`,
     email: user.email,
-    id: user.id
+    id: user.id,
+    image: user.image
   });
 
   useEffect(() => {}, [dispatch, message, error]);
@@ -26,10 +27,13 @@ const UserEdit = () => {
 
   const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const [nameElement, emailElement] = e.target;
+    const [nameElement, emailElement, idElement, imageElement] = e.target.elements;
 
     let nameArray = (nameElement as HTMLInputElement).value.split(' ');
     let email = (emailElement as HTMLInputElement).value;
+
+    let image: FileList | null = (imageElement as HTMLInputElement).files;
+    let file: null | File = image![0];
 
     dispatch(
       updateUser({
@@ -39,6 +43,8 @@ const UserEdit = () => {
         last_name: nameArray[1]
       })
     );
+
+    dispatch(postImageUser({image: file, id}));
   };
 
   return (

@@ -16,7 +16,6 @@ function Navbar() {
     <Container>
       <nav>
         <LinkStyled to='/'>Home</LinkStyled>
-        <LinkStyled to='form'>Form</LinkStyled>
         <LinkStyled to='counter'>Counter</LinkStyled>
       </nav>
     </Container>

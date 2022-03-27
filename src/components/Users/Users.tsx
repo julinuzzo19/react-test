@@ -1,7 +1,7 @@
 import {Grid} from '@mui/material';
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {postUsers} from '../../actions/userActions';
+import {postUsers, postImageUser} from '../../actions/userActions';
 import {User} from '../../interfaces/User';
 import UserForm from './UserForm/UserForm';
 
@@ -11,14 +11,22 @@ function Users() {
   const dispatch = useDispatch();
 
   const handleCreateUser = async (user: User) => {
-    await dispatch(postUsers(user));
+    console.log(user);
+    dispatch(postUsers(user));
+  };
+
+  const handleCreateImageUser = async ({image, id}: any) => {
+    dispatch(postImageUser({image, id}));
   };
   return (
     <Grid container spacing={1} marginTop='auto'>
-      <Grid item xs={6} className='bg-danger'>
-        <UserForm createUser={handleCreateUser} />
+      <Grid item xs={6} className='bg-danger' height={'auto'}>
+        <UserForm
+          createUser={handleCreateUser}
+          createImageUser={handleCreateImageUser}
+        />
       </Grid>
-      <Grid item xs={6} className='bg-success'>
+      <Grid item xs={6} className='bg-success' height={'auto'}>
         <UserTable />
       </Grid>
     </Grid>

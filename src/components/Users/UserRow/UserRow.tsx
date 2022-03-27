@@ -1,4 +1,4 @@
-import {Button, TableCell, TableRow} from '@mui/material';
+import {Button, CardMedia, TableCell, TableRow} from '@mui/material';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 import UpdateIcon from '@mui/icons-material/ModeEditOutline';
@@ -18,6 +18,9 @@ const UserRow = ({users, handleUpdateItem, handleRemoveItem}: any) => {
     users.map((item: User) => (
       <TableRow key={item.id}>
         <TableCell>{item.id}</TableCell>
+        <TableCell>
+          <CardMedia component='img' height={60} width='100px' image={item.image} />
+        </TableCell>
         <TableCell>{item.first_name}</TableCell>
         <TableCell>{item.last_name}</TableCell>
         <TableCell>{item.email}</TableCell>

@@ -32,12 +32,13 @@ const UserTable = () => {
     navigate(`/users/${user.id}`, {state: {user}});
   };
   return (
-    <Grid container className='mt-5'>
+    <Grid container>
       <Grid item xs={4}>
         <Table sx={{minWidth: 650}}>
           <TableHead>
             <TableRow>
               <TableCell>#</TableCell>
+              <TableCell>Image</TableCell>
               <TableCell>First Name</TableCell>
               <TableCell>Last name</TableCell>
               <TableCell>Email</TableCell>

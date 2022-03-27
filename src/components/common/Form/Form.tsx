@@ -31,6 +31,13 @@ const Form = ({handleSubmit, user, handleChange}: any) => {
                 value={user && user.id}
                 disabled={user ? true : false}
               />
+              <FormReact.Label>Upload image</FormReact.Label>
+              <FormReact.Control
+                type='file'
+                name='image'
+                placeholder='Enter url image'
+                value={user && user.image}
+              />
             </FormReact.Group>
 
             <Button variant='danger' type='submit'>

@@ -10,7 +10,7 @@ function Router() {
     <Routes>
       <Route path='/' element={<Users />} />
       <Route path='/counter' element={<Counter />} />
-      <Route path='/form' element={<UserForm />} />
+
       <Route path='/users/:id' element={<UserEdit />} />
     </Routes>
   );
