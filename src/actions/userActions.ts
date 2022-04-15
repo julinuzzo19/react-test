@@ -10,9 +10,7 @@ import {
   UPDATE_USER_FAILURE,
   UPDATE_USER_SUCCESS,
   GET_USER_BY_ID_FAILURE,
-  GET_USER_BY_ID_SUCCESS,
-  POST_USER_IMAGE_FAILURE,
-  POST_USER_IMAGE_SUCCESS
+  GET_USER_BY_ID_SUCCESS
 } from '../types';
 
 export const getUsers = () => {
@@ -30,10 +28,19 @@ export const getUsers = () => {
 };
 
 export const postUsers = (user: User) => {
-  console.log(user);
+  var formData = new FormData();
+  formData.append('first_name', user.first_name);
+  formData.append('last_name', user.last_name);
+  formData.append('email', user.email);
+  formData.append('image', user.image);
+
   return (dispatch: any) => {
     axios
-      .post(`http://localhost:3000/api/users/${user.id}`, user)
+      .post(`http://localhost:3000/api/users/${user.id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
       .then(res => {
         dispatch({
           type: POST_USER_SUCCESS,
@@ -43,29 +50,6 @@ export const postUsers = (user: User) => {
       .catch(err => {
         console.log(err);
         dispatch({type: POST_USER_FAILURE, payload: err});
-      });
-  };
-};
-
-export const postImageUser = ({image, id}: any) => {
-  return (dispatch: any) => {
-    const data = new FormData();
-    data.append('image', image);
-
-    axios
-      .post(`http://localhost:3000/api/users/image/${id}`, data, {
-        headers: {'Content-Type': 'multipart/form-data'}
-      })
-      .then(res => {
-        console.log(res);
-        dispatch({
-          type: POST_USER_IMAGE_SUCCESS,
-          payload: {message: res.data.message}
-        });
-      })
-      .catch(err => {
-        console.log(err);
-        dispatch({type: POST_USER_IMAGE_FAILURE, payload: err});
       });
   };
 };

@@ -15,16 +15,10 @@ function Users() {
     dispatch(postUsers(user));
   };
 
-  const handleCreateImageUser = async ({image, id}: any) => {
-    dispatch(postImageUser({image, id}));
-  };
   return (
     <Grid container spacing={1} marginTop='auto'>
       <Grid item xs={6} className='bg-danger' height={'auto'}>
-        <UserForm
-          createUser={handleCreateUser}
-          createImageUser={handleCreateImageUser}
-        />
+        <UserForm createUser={handleCreateUser} />
       </Grid>
       <Grid item xs={6} className='bg-success' height={'auto'}>
         <UserTable />

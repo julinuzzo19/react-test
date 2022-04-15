@@ -2,7 +2,7 @@ import {useLocation, useParams} from 'react-router-dom';
 import Form from '../../common/Form/Form';
 import {useDispatch, useSelector, useStore} from 'react-redux';
 import {RootState} from '../../../reducers';
-import {postImageUser, updateUser} from '../../../actions/userActions';
+import { updateUser} from '../../../actions/userActions';
 import {ChangeEvent, useEffect, useState} from 'react';
 
 const UserEdit = () => {
@@ -40,11 +40,10 @@ const UserEdit = () => {
         id: user.id,
         email,
         first_name: nameArray[0],
-        last_name: nameArray[1]
+        last_name: nameArray[1],
+        image: file
       })
     );
-
-    dispatch(postImageUser({image: file, id}));
   };
 
   return (
