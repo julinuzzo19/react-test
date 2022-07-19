@@ -8,10 +8,15 @@ import {
   GET_USER_BY_ID_FAILURE,
   GET_USER_BY_ID_SUCCESS,
   UPDATE_USER_FAILURE,
-  UPDATE_USER_SUCCESS
-} from './../types';
+  UPDATE_USER_SUCCESS,
+} from "./../types";
 
-const initialState: any = {data: [], loading: true, error: false, message: ''};
+const initialState: any = {
+  data: [],
+  loading: true,
+  error: false,
+  message: "",
+};
 
 interface Action {
   type: string;
@@ -21,32 +26,44 @@ interface Action {
 const userReducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case GET_USERS_SUCCESS:
-      return {...state, data: [...action.payload], loading: false, error: false};
+      return {
+        ...state,
+        data: [...action.payload],
+        loading: false,
+        error: false,
+      };
     case GET_USERS_FAILURE:
-      return {...state, message: action.payload, loading: false, error: true};
+      return { ...state, message: action.payload, loading: false, error: true };
     case POST_USER_SUCCESS: {
       return {
         data: [...state.data, action.payload.data],
         message: action.payload,
         loading: false,
-        error: false
+        error: false,
       };
     }
     case POST_USER_FAILURE:
-      return {...state, message: action.payload, error: true};
+      return { ...state, message: action.payload, error: true };
 
-    case DELETE_USER_SUCCESS:
-      return {...state, message: action.payload};
+    case DELETE_USER_SUCCESS: {
+      console.log({ state, payload: action.payload });
+
+      let newData = state.data.filter((item: any) => {
+        return item.id != action.payload.id;
+      });
+
+      return { ...state, message: action.payload.message, data: newData };
+    }
     case DELETE_USER_FAILURE:
-      return {...state, message: action.payload, err: true};
+      return { ...state, message: action.payload, err: true };
     case GET_USER_BY_ID_SUCCESS:
-      return {...state, data: [action.payload], err: false};
+      return { ...state, data: [action.payload], err: false };
     case GET_USER_BY_ID_FAILURE:
-      return {...state, message: action.payload, err: true};
+      return { ...state, message: action.payload, err: true };
     case UPDATE_USER_SUCCESS:
-      return {...state, message: action.payload, err: false};
+      return { ...state, message: action.payload, err: false };
     case UPDATE_USER_FAILURE:
-      return {...state, message: action.payload, err: true};
+      return { ...state, message: action.payload, err: true };
 
     default:
       return state;

@@ -36,7 +36,7 @@ const Form = ({handleSubmit, user, handleChange}: any) => {
                 type='file'
                 name='image'
                 placeholder='Enter url image'
-                value={user && user.image}
+               
               />
             </FormReact.Group>
 

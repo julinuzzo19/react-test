@@ -17,7 +17,7 @@ const App = () => (
         <Header />
         <Navbar />
         <Router />
-        <Footer />
+        {/* <Footer /> */}
       </ThemeProvider>
     </BrowserRouter>
   </Provider>
